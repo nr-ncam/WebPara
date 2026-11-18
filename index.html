@@ -3,10 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Главная</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    
+    <header>
+        <div class="theme-switcher">
+            <input type="checkbox" id="theme-toggle" class="visually-hidden">
+            <label for="theme-toggle" aria-label="Переключить светлую/темную тему">
+                <!-- Иконка или текст, стилизуется через CSS -->
+                <span>Тема</span> 
+            </label>
+        </div>
+    </header>
+    <main>
+        <div class="main-hero-block">
+            <!-- сделаете что вот эти штуки левая половинка и правая в пределах одного квадратика-->
+            <!-- референсы/heroblock -->
+            <div class="herob-left">
+                <h1>ГИБЛАБ</h1>
+                <p>Открываем регистрацию в новый сезон {Гиб лаб}</p>
+                <button class="herob-butt-about" onclick="location.href='schedule.html'">Расписание</button>
+                <button class="herob-butt-faq">FAQ</button>
+                <button class="herob-butt-contact">Связаться</button>
+            </div>
+            <div class="herob-right">
+                <img src="assets/001.jpg" alt="КРАСИВАЯ КАРТИНКА 🔥">
+            </div>
+        </div>
+
+        <hr>
+ 
+        <div class="about-club">
+            <h2>О клубе</h2>
+            <p>Хочешь прокачать навыки,которые ценят все IT-компании, собрать команду, решить реальный кейс и получить резюме, которое впечатлит работодателя? тогда тебе к НАМ! </p>
+        </div>
+
+        <hr>
+
+        <div class="event-cards">
+            <h2>Мероприятия</h2>
+           
+            <div>
+                Нетворкинг: Наконец встречаемся все в месте в актовом зале! Расскажем что такое Гиб Лаб, ответим на вопросы, выполним первые задания и просто хорошо проведём время
+            </div>
+            <div>
+                04,03,2025 Большой тренинг по целепологанию: научитесь ставить цели, которые гармонируют с вашими жизненными ценнастями и приоритетами
+            </div>
+            <div>
+                12,03,2025 мастер класс по самопризщентации от HR 2гис: узнаете, как привлечь внимание рекрутеров уже на этапе подачи резюме
+            </div>
+            <div>
+                19,03,2025 Тренинг по коммуникации: Поймёте как важна прозрачность общения с коллегами и научитесь чётко выражать свои мысли
+            </div>
+            <div>
+                25,303,2025 Тренинг по командной работе: Научитесь эфективно достигать общих целей и познакомитесь с основами методологии Agile
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="faq">
+            <h2>Часто задаваемые вопросы</h2>
+            <details class="faq-entry">
+                <summary>Cколько дней можно пропустить и что за это будет?</summary>
+                <p>Здравствуйте, можно пропустить 3 дня, но учитывайте что пропуски нужно закрывать. Что бы закрыть пропуски необходимо выполнить домашнее задание и скинуть нам в течении 1 недели.</p>
+            </details>
+            <details class="faq-entry">
+                <summary>Что мы можем получить за учатсие и полное прохождение?</summary>
+                <p>У нас есть множество различных наград, розыгрыж пятиминутка, лайк розыргрыш, призы за выполнение всез домашних заданий призы за полное прохождение (150000руб на всех) и призы от кейсодателей.</p>
+            </details>
+        </div>
+
+        <hr>
+
+        <div class="feedback-form">
+            <form action="#">
+                <h2>Форма обратной связи</h2>
+                <input type="text" id="input-username">Ваше имя</input>
+                <input type="email" name="email" id="input-email" required>Email</input>
+                <h3>Оценка</h3>
+                <input type="radio" name="input-grade" id="input-grade">Отлично</input>
+                <input type="radio" name="input-grade" id="input-grade">Хорошо</input>
+                <input type="radio" name="input-grade" id="input-grade">Нормально</input>
+                <input type="radio" name="input-grade" id="input-grade">Плохо</input>
+                <input type="radio" name="input-grade" id="input-grade">Ужасно</input>
+            </form>
+        </div>
+    </main>
+    <footer></footer>
 </body>
 </html>

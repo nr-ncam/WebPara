@@ -1,0 +1,530 @@
+:root {
+    --color-green: #00C853;
+    --color-purple: #8B4CF5;
+    --color-blue: #2B44FF;
+    --color-white: #FFFFFF;
+
+    --bg-main: #E8F5E9; 
+    
+    --text-main: var(--color-blue);
+    --text-accent: var(--color-white);
+
+    --btn-primary-bg: var(--color-purple);
+    --btn-primary-text: var(--color-white);
+    --btn-primary-hover: var(--color-green);
+    
+    --btn-secondary-bg: transparent;
+    --btn-secondary-text: var(--color-blue);
+    --btn-secondary-border: var(--color-blue);
+    --btn-secondary-hover-bg: var(--color-blue);
+    --btn-secondary-hover-text: var(--color-white);
+
+    --card-bg: var(--color-white);
+}
+
+/* =========================================
+   ТЕМНАЯ ТЕМА (Точно как в первом коде)
+   ========================================= */
+body:has(#theme-toggle:checked) {
+    --bg-main: var(--color-blue);      /* Темный фон */
+    --card-bg: var(--color-purple);    /* Фиолетовые карточки */
+    
+    --text-main: var(--color-white);   /* Белый текст */
+    --text-accent: var(--color-green); /* Зеленый акцент */
+    
+    /* Кнопки */
+    --btn-primary-bg: var(--color-green);
+    --btn-primary-text: var(--color-blue);
+    --btn-primary-hover: var(--color-white);
+    
+    --btn-secondary-bg: transparent;
+    --btn-secondary-text: var(--color-white);
+    --btn-secondary-border: var(--color-white);
+    --btn-secondary-hover-bg: var(--color-white);
+    --btn-secondary-hover-text: var(--color-blue);
+}
+
+/* --- ТОЧЕЧНЫЕ ИСПРАВЛЕНИЯ ДЛЯ ТЕМНОЙ ТЕМЫ --- */
+
+/* Hero-блок (чтобы не сливался с фоном) */
+body:has(#theme-toggle:checked) .main-hero-block {
+    background-color: var(--color-purple);
+    border-color: var(--color-white);
+}
+
+/* Заголовки в карточках (чтобы не были синими на фиолетовом) */
+body:has(#theme-toggle:checked) .about-club h1, 
+body:has(#theme-toggle:checked) .event-cards h2, 
+body:has(#theme-toggle:checked) .faq h2, 
+body:has(#theme-toggle:checked) .feedback-form h2, 
+body:has(#theme-toggle:checked) .feedback-form h3 {
+    color: var(--color-white);
+}
+
+/* Рамки карточек */
+body:has(#theme-toggle:checked) .about-club, 
+body:has(#theme-toggle:checked) .event-cards, 
+body:has(#theme-toggle:checked) .faq, 
+body:has(#theme-toggle:checked) .feedback-form {
+    border-color: var(--color-white);
+}
+
+/* Блок мероприятий (текст, чтобы не сливался) */
+body:has(#theme-toggle:checked) .event-cards {
+    color: var(--color-white);
+}
+
+/* Поля формы */
+body:has(#theme-toggle:checked) .feedback-form input[type="text"],
+body:has(#theme-toggle:checked) .feedback-form input[type="email"] {
+    color: var(--color-white);
+    border-color: var(--color-white);
+}
+
+/* Радиокнопки формы */
+body:has(#theme-toggle:checked) .feedback-form input[type="radio"] {
+    border-color: var(--color-white);
+}
+
+/* Блоки внутри мероприятий (плитки) */
+body:has(#theme-toggle:checked) .event-cards p,
+body:has(#theme-toggle:checked) .event-cards > div {
+    border-color: var(--color-white);
+}
+
+/* Аккордеон FAQ */
+body:has(#theme-toggle:checked) .faq-entry {
+    border-color: var(--color-purple);
+}
+
+/* =========================================
+   БАЗОВЫЕ СТИЛИ
+   ========================================= */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: system-ui, -apple-system, sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    line-height: 1.6;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Утилита для визуального скрытия чекбокса (переключателя) */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+/* Стилизация самого переключателя темы */
+.theme-switcher {
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.theme-switcher label {
+    background-color: var(--color-purple);
+    color: var(--color-white);
+    padding: 0.5rem 1.5rem;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: bold;
+    border: 2px solid transparent;
+    transition: background-color 0.3s ease;
+}
+
+.theme-switcher label:hover {
+    background-color: var(--color-green);
+    color: var(--color-blue);
+}
+
+.theme-switcher input:focus-visible + label {
+    outline: 3px solid var(--color-green);
+    outline-offset: 3px;
+}
+
+/* =========================================
+   HERO-БЛОК
+   ========================================= */
+.main-hero-block {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    padding: 3rem 1.5rem;
+    max-width: 1440px;
+    margin: 0 auto;
+    align-items: center;
+    background-color: var(--color-blue);
+    border: 4px solid var(--color-purple);
+    border-radius: 24px;
+    box-shadow: 10px 10px 0px 0px var(--color-green);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.herob-left {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+}
+
+.herob-left h1,
+.herob-left p {
+    width: 100%;
+}
+
+.herob-left h1 {
+    font-size: clamp(2.5rem, 10vw, 5rem);
+    font-weight: 900;
+    color: var(--text-accent);
+    line-height: 1.1;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+}
+
+.herob-left p {
+    font-size: clamp(1rem, 4vw, 1.25rem);
+    margin-bottom: 0.5rem;
+    color: var(--text-accent);
+}
+
+.herob-left button {
+    padding: 0.8rem 1.8rem;
+    font-size: 1rem;
+    font-weight: 700;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.herob-butt-about {
+    background-color: var(--btn-primary-bg);
+    color: var(--btn-primary-text);
+    border: 2px solid var(--btn-primary-bg);
+}
+
+.herob-butt-about:hover {
+    background-color: var(--btn-primary-hover);
+    border-color: var(--btn-primary-hover);
+    color: var(--color-white); 
+}
+
+.herob-butt-faq,
+.herob-butt-contact {
+    background-color: var(--btn-secondary-bg);
+    color: var(--btn-secondary-text);
+    border: 2px solid var(--btn-secondary-border);
+}
+
+.herob-butt-faq:hover,
+.herob-butt-contact:hover {
+    background-color: var(--btn-secondary-hover-bg);
+    color: var(--btn-secondary-hover-text);
+}
+
+.herob-left button:focus-visible {
+    outline: 3px solid var(--color-green);
+    outline-offset: 3px;
+}
+
+.herob-right {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.herob-right img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    color: var(--color-white);
+    font-size: 1.2rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+}
+
+/* =========================================
+   ОСНОВНОЙ КОНТЕНТ
+   ========================================= */
+main {
+    padding: 2rem 1rem;
+    max-width: 1440px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+hr {
+    border: none;
+    height: 4px;
+    background-color: var(--color-purple);
+    border-radius: 2px;
+    margin: 1rem 0;
+    opacity: 0.6;
+}
+
+.about-club, 
+.event-cards, 
+.faq, 
+.feedback-form {
+    background-color: var(--card-bg);
+    padding: 2rem;
+    border: 3px solid var(--color-purple);
+    border-radius: 24px;
+    box-shadow: 6px 6px 0px 0px var(--color-green);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.about-club h1, 
+.event-cards h2, 
+.faq h2, 
+.feedback-form h2, 
+.feedback-form h3 {
+    color: var(--color-blue);
+    margin-bottom: 1rem;
+}
+
+.about-club p {
+    font-size: 1.1rem;
+    max-width: 800px;
+}
+
+/* =========================================
+   КАРТОЧКИ МЕРОПРИЯТИЙ
+   ========================================= */
+.event-cards {
+    text-align: center;
+    padding: 3rem 2rem;
+    color: var(--color-purple);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+.event-cards h2 {
+    grid-column: 1 / -1;
+    margin-bottom: 1rem;
+}
+
+.event-cards p,
+.event-cards > div {
+    background-color: var(--bg-main);
+    border: 2px solid var(--color-purple);
+    border-radius: 16px;
+    padding: 1.5rem;
+    text-align: left;
+    font-size: 1rem;
+    color: var(--text-main);
+    transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+.event-cards p:hover,
+.event-cards > div:hover {
+    transform: translateY(-5px);
+}
+
+@media (min-width: 768px) {
+    .event-cards {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* =========================================
+   FAQ АККОРДЕОН
+   ========================================= */
+.faq-entry {
+    background-color: var(--bg-main);
+    border: 2px solid var(--color-blue);
+    border-radius: 12px;
+    margin-bottom: 1rem;
+    overflow: hidden;
+    transition: background-color 0.3s ease;
+}
+
+.faq-entry summary {
+    padding: 1.2rem;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--color-white);
+    background-color: var(--color-blue);
+    cursor: pointer;
+    list-style: none; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s ease;
+}
+
+.faq-entry summary::-webkit-details-marker {
+    display: none;
+}
+
+.faq-entry summary::after {
+    content: "+";
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--color-white);
+}
+
+.faq-entry[open] summary::after {
+    content: "−";
+}
+
+.faq-entry summary:hover {
+    background-color: var(--color-purple);
+}
+
+.faq-entry summary:focus-visible {
+    outline: 3px solid var(--color-green);
+    outline-offset: -3px;
+}
+
+.faq-entry p {
+    padding: 1.5rem;
+    font-size: 1rem;
+    color: var(--text-main);
+    border-top: 2px solid var(--color-blue);
+}
+
+/* =========================================
+   ФОРМА
+   ========================================= */
+.feedback-form form {
+    display: block;
+    max-width: 100%;
+}
+
+.feedback-form h2,
+.feedback-form h3 {
+    display: block;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.feedback-form h3 {
+    margin-top: 2rem;
+}
+
+.feedback-form input[type="text"],
+.feedback-form input[type="email"] {
+    display: block;
+    width: 100%;
+    max-width: 400px;
+    padding: 1rem;
+    font-size: 1rem;
+    font-family: inherit;
+    color: var(--color-blue);
+    background-color: var(--bg-main);
+    border: 2px solid var(--color-blue);
+    border-radius: 12px;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.feedback-form input[type="email"] {
+    margin-left: 0; 
+    margin-top: 1.5rem;
+}
+
+.feedback-form input[type="text"]:focus,
+.feedback-form input[type="email"]:focus {
+    border-color: var(--color-purple);
+    box-shadow: 0 0 0 4px rgba(139, 76, 245, 0.2);
+}
+
+.feedback-form input:user-invalid,
+.feedback-form input:invalid {
+    border-color: var(--color-green);
+    background-color: rgba(0, 200, 83, 0.05);
+}
+
+.feedback-form input[type="radio"] {
+    appearance: none;
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    border: 2px solid var(--color-blue);
+    border-radius: 50%;
+    margin-right: 5px;      
+    margin-left: 15px;      
+    margin-bottom: 0.5rem;  
+    vertical-align: middle;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+.feedback-form h3 + input[type="radio"] {
+    margin-left: 0;
+}
+
+.feedback-form input[type="radio"]:checked {
+    border-color: var(--color-purple);
+}
+
+.feedback-form input[type="radio"]:checked::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 10px;
+    height: 10px;
+    background-color: var(--color-purple);
+    border-radius: 50%;
+}
+
+.feedback-form input[type="radio"]:focus-visible {
+    outline: 3px solid var(--color-green);
+    outline-offset: 2px;
+}
+
+/* =========================================
+   АДАПТИВНОСТЬ
+   ========================================= */
+@media (min-width: 768px) {
+    main {
+        padding: 4rem 2rem;
+        gap: 3rem;
+    }
+
+    .about-club, 
+    .event-cards, 
+    .faq, 
+    .feedback-form {
+        padding: 3rem;
+        box-shadow: 10px 10px 0px 0px var(--color-green);
+    }
+}
+
+@media (min-width: 1440px) {
+    main {
+        padding: 6rem 4rem;
+    }
+
+    h1 { font-size: 2.5rem; }
+    h2 { font-size: 2rem; }
+    
+    .about-club p {
+        font-size: 1.25rem;
+    }
+}
