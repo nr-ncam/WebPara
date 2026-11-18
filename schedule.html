@@ -1,11 +1,159 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Расписание</title>
+    <title>Расписание мероприятий — [Название клуба]</title>
+    <!-- Сюда Участник Б подключит CSS -->
+    <!-- <link rel="stylesheet" href="style.css"> -->
 </head>
 <body>
-    
+
+    <!-- ШАПКА САЙТА -->
+    <header class="site-header">
+        <div class="logo">
+            <a href="index.html" aria-label="На главную страницу">
+                <img src="logo-placeholder.png" alt="Логотип [Название клуба]">
+                <span>[Название клуба]</span>
+            </a>
+        </div>
+
+        <!-- Навигация -->
+        <nav class="main-nav" aria-label="Основная навигация">
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <!-- aria-current="page" указывает скринридерам, что мы на этой странице -->
+                <li><a href="schedule.html" aria-current="page">Расписание</a></li>
+            </ul>
+        </nav>
+
+        <!-- Переключатель темы (скрытый чекбокс по ТЗ) -->
+        <div class="theme-switcher">
+            <input type="checkbox" id="theme-toggle" class="visually-hidden">
+            <label for="theme-toggle" aria-label="Переключить светлую/темную тему">
+                <!-- Иконка или текст, стилизуется через CSS -->
+                <span>Тема</span> 
+            </label>
+        </div>
+    </header>
+
+    <!-- ОСНОВНОЙ КОНТЕНТ -->
+    <main>
+        <h1>Расписание мероприятий</h1>
+        <p>Выберите интересующее вас событие и узнайте подробности.</p>
+
+        <!-- БЛОК ФИЛЬТРАЦИИ И ПОИСКА -->
+        <section class="filters-section" aria-label="Фильтрация мероприятий">
+            <!-- Поиск-заглушка (стилизуется только CSS) -->
+            <div class="search-box">
+                <label for="search-input">Поиск по мероприятиям:</label>
+                <input type="search" id="search-input" name="search" placeholder="Введите название...">
+            </div>
+
+            <!-- Фильтр по категориям (скрытые радиокнопки) -->
+            <fieldset class="category-filter">
+                <legend>Категории:</legend>
+                
+                <!-- Радиокнопки должны иметь одинаковый name, чтобы работать как переключатель -->
+                <input type="radio" name="category" id="cat-all" class="visually-hidden" checked>
+                <label for="cat-all">Все</label>
+
+                <input type="radio" name="category" id="cat-lectures" class="visually-hidden">
+                <label for="cat-lectures">Лекции</label>
+
+                <input type="radio" name="category" id="cat-workshops" class="visually-hidden">
+                <label for="cat-workshops">Воркшопы</label>
+
+                <input type="radio" name="category" id="cat-sports" class="visually-hidden">
+                <label for="cat-sports">Спорт</label>
+            </fieldset>
+        </section>
+
+        <!-- СЕТКА КАРТОЧЕК МЕРОПРИЯТИЙ -->
+        <section class="events-grid" aria-label="Список мероприятий">
+            
+            <!-- КАРТОЧКА 1 (Пример. Сделай минимум 6 таких) -->
+            <article class="event-card" data-category="lectures">
+                <img src="event1.jpg" alt="Афиша лекции: [Название лекции]">
+                <div class="card-content">
+                    <span class="category-badge">Лекция</span>
+                    <h2>Название мероприятия 1</h2>
+                    <p class="event-date"><time datetime="2024-05-20T18:00">20 мая, 18:00</time></p>
+                    <p>Краткое описание мероприятия в одну-две строки...</p>
+                    <!-- Кнопка открытия модального окна через :target -->
+                    <a href="#modal-event-1" class="btn-details">Подробнее</a>
+                </div>
+            </article>
+
+            <!-- КАРТОЧКА 2 -->
+            <article class="event-card" data-category="workshops">
+                <img src="event2.jpg" alt="Афиша воркшопа: [Название воркшопа]">
+                <div class="card-content">
+                    <span class="category-badge">Воркшоп</span>
+                    <h2>Название мероприятия 2</h2>
+                    <p class="event-date"><time datetime="2024-05-22T19:00">22 мая, 19:00</time></p>
+                    <p>Краткое описание мероприятия...</p>
+                    <a href="#modal-event-2" class="btn-details">Подробнее</a>
+                </div>
+            </article>
+
+            <!-- Добавь карточки 3, 4, 5, 6... -->
+            <!-- Не забудь менять data-category="lectures / workshops / sports" -->
+            
+        </section>
+
+        <!-- МОДАЛЬНЫЕ ОКНА (Открываются через :target) -->
+        <!-- Они лежат вне сетки, чтобы не ломать верстку -->
+        
+        <div id="modal-event-1" class="modal">
+            <div class="modal-content" role="dialog" aria-labelledby="modal-title-1">
+                <!-- Закрытие модалки (ссылка на пустой якорь или #) -->
+                <a href="#" class="modal-close" aria-label="Закрыть окно">&times;</a>
+                <h2 id="modal-title-1">Название мероприятия 1</h2>
+                <p><strong>Категория:</strong> Лекция</p>
+                <p><strong>Дата и время:</strong> 20 мая, 18:00</p>
+                <p><strong>Место:</strong> Аудитория [Номер]</p>
+                <p>Здесь полное описание мероприятия. Спикеры, программа, на что направлено и т.д.</p>
+            </div>
+        </div>
+
+        <div id="modal-event-2" class="modal">
+            <div class="modal-content" role="dialog" aria-labelledby="modal-title-2">
+                <a href="#" class="modal-close" aria-label="Закрыть окно">&times;</a>
+                <h2 id="modal-title-2">Название мероприятия 2</h2>
+                <p><strong>Категория:</strong> Воркшоп</p>
+                <p><strong>Дата и время:</strong> 22 мая, 19:00</p>
+                <p>Здесь полное описание мероприятия...</p>
+            </div>
+        </div>
+
+        <!-- БЛОК FAQ (Аккордеон на details/summary) -->
+        <section class="faq-section" aria-label="Часто задаваемые вопросы">
+            <h2>Часто задаваемые вопросы</h2>
+            
+            <details>
+                <summary>Нужна ли предварительная регистрация на мероприятия?</summary>
+                <p>Да, регистрация обязательна. Ссылка на форму регистрации приходит после нажатия кнопки "Подробнее" на карточке мероприятия.</p>
+            </details>
+
+            <details>
+                <summary>Могут ли прийти студенты с других факультетов?</summary>
+                <p>Конечно! Мы рады всем студентам нашего университета.</p>
+            </details>
+
+            <details>
+                <summary>Где проходят спортивные мероприятия?</summary>
+                <p>Спортивные секции проходят в главном спортзале университета (Корпус В).</p>
+            </details>
+        </section>
+
+    </main>
+
+    <!-- ПОДВАЛ -->
+    <footer class="site-footer">
+        <p>&copy; 2024 [Название клуба]. Все права защищены.</p>
+        <!-- Ссылки на соцсети и т.д. -->
+    </footer>
+
 </body>
 </html>

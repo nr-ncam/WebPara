@@ -1,3 +1,29 @@
+:root {
+    --color-green: #00C853;
+    --color-purple: #8B4CF5;
+    --color-blue: #2B44FF;
+    --color-white: #FFFFFF;
+
+    /* Светлая тема (по умолчанию): очень светло-зеленый фон */
+    --bg-main: #E8F5E9; 
+    
+    --text-main: var(--color-blue);
+    --text-accent: var(--color-white);
+    
+    /* Настройки кнопок */
+    --btn-primary-bg: var(--color-purple);
+    --btn-primary-text: var(--color-white);
+    --btn-primary-hover: var(--color-green);
+    
+    --btn-secondary-bg: transparent;
+    --btn-secondary-text: var(--color-blue);
+    --btn-secondary-border: var(--color-blue);
+    --btn-secondary-hover-bg: var(--color-blue);
+    --btn-secondary-hover-text: var(--color-white);
+
+    --card-bg: var(--color-white); /* Фон самой карточки (чтобы текст читался) */
+    --img-bg: var(--color-blue); /* Фон для пустой картинки */
+}
 .main-hero-block {
     display: grid;
     grid-template-columns: 1fr;
@@ -6,6 +32,10 @@
     max-width: 1440px;
     margin: 0 auto;
     align-items: center;
+    background-color: var(--color-blue);
+    border: 4px solid var(--color-purple);
+    border-radius: 24px;
+    box-shadow: 10px 10px 0px 0px var(--color-green);
 }
 
 .herob-left {
@@ -32,6 +62,7 @@
 .herob-left p {
     font-size: clamp(1rem, 4vw, 1.25rem);
     margin-bottom: 0.5rem;
+    color: var(--text-accent);
 }
 
 .herob-left button {
@@ -83,10 +114,7 @@
 .herob-right img {
     width: 100%;
     aspect-ratio: 4 / 3;
-    background-color: var(--img-bg);
-    border: 4px solid var(--color-purple);
-    border-radius: 24px;
-    box-shadow: 10px 10px 0px 0px var(--color-green);
+
     object-fit: cover;
 
     color: var(--color-white);
